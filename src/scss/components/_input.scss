@@ -1,0 +1,16 @@
+input {
+  -webkit-appearance: none;
+  height: 30px;
+  padding: 4px 10px;
+  margin: 0 10px;
+  border: 2px solid $color-grey;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  background: $color-grey;
+  transition: all 0.2s;
+
+  &:focus {
+    border-bottom: 2px solid black;
+  }
+}

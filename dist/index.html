@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Budget Tracker</title>
+        <meta name="description" content="Control Yout budget, add expenses, add incomes, track cashflow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./index.js" async></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="budget">
+                <div class="budget__title">
+                    <h1>Your current budget!</h1>
+                </div>
+                <div class="budget__value"></div>
+                <div class="budget__income"></div>
+                <div class="budget__expense"></div>
+            </div>
+        </header>
+
+        <main>
+            <div class="add">
+                <h2>Add new entry</h2>
+                <div class="add__controls">
+                    <div class="switcher">
+                        <input type="radio" name="budget" id="income" value="inc" class="switcher__input switcher__input--income" checked>
+                        <label for="income" class="switcher__label">Income</label>
+        
+                        <input type="radio" name="budget" id="expense" value="exp" class="switcher__input switcher__input--expense">
+                        <label for="expense" class="switcher__label">Expense</label>
+        
+                        <span class="switcher__toggle"></span>
+                    </div>
+                    <input class="add__description" type="text" placeholder="Add description">
+                    <input class="add__value" type="number" placeholder="Value">
+                    <button class="btn add__submit">
+                        <svg width="42px" height="42px" viewBox="0 0 12 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="plus" fill="#fff">
+                                <path id="Shape" d="M 12 7 L 12 9 L 7 9 L 7 14 L 5 14 L 5 9 L 0 9 L 0 7 L 5 7 L 5 2 L 7 2 L 7 7 L 12 7">
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="details__income">
+                    <h3>Incomes</h3>
+                </div>
+                <div class="details__expense">
+                    <h3>Expenses</h3>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made by Huczk</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+.switcher {
+  display: inline-block;
+  height: 30px;
+  padding: 4px;
+  margin: 0 10px;
+  background: $color-grey;
+  width: 200px;
+  border: 2px solid $color-grey;
+  position: relative;
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    float: left;
+    width: 50%;
+    line-height: 30px;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+    position: inherit;
+    z-index: 10;
+    transition: color 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform;
+  }
+
+  &__toggle {
+    position: absolute;
+    float: left;
+    height: 30px;
+    width: 50%;
+    line-height: 30px;
+    cursor: pointer;
+    background-color: $color-success;
+    left: 5px;
+    top: 4px;
+    transition: all 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform;
+  }
+
+  &__input:checked + &__label {
+    color: #fff;
+  }
+
+  &__input--expense:checked ~ &__toggle {
+    left: 48%;
+    background-color: $color-danger;
+  }
+}

@@ -1,0 +1,29 @@
+header .budget {
+  max-width: 375px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+
+  & > * {
+    text-align: right;
+  }
+
+  &__title {
+    text-align: center
+  }
+
+  &__value {
+    font-size: 2rem;
+    text-align: center
+  }
+
+  &__income {
+    color: $color-success;
+  }
+
+  &__expense {
+    color: $color-danger;
+  }
+}
