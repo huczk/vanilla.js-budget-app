@@ -4,6 +4,9 @@ const sass = require('gulp-sass');
 const rename = require("gulp-rename");
 const rollup = require('gulp-rollup');
 const uglify = require('gulp-uglify');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 gulp.task('js', () =>
     gulp.src('./src/js/*.js')
@@ -26,12 +29,18 @@ gulp.task('js', () =>
         .pipe(gulp.dest('./dist'))
 );
 
-gulp.task('scss', () =>
-    gulp.src('./src/scss/**/*.scss')
+gulp.task('scss', () => {
+    const plugins = [
+        autoprefixer({browsers: ['> 5%']}),
+        cssnano()
+    ];
+
+    return gulp.src('./src/scss/**/*.scss')
       .pipe(sass().on('error', sass.logError))
+      .pipe(postcss(plugins))
       .pipe(rename("styles.css"))
       .pipe(gulp.dest('./dist'))
-);
+});
 
 gulp.task('default', [ 'js', 'scss' ]);
 

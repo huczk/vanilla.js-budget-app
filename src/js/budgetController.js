@@ -42,10 +42,7 @@ export default function BudgetController() {
                 : new Income(ID, des, val)
             );
 
-            // Push it into our data structure
             data.allItems[type].push(newItem);
-
-            // Return the new element
             return newItem;
         },
 
@@ -54,11 +51,9 @@ export default function BudgetController() {
         },
 
         calculateBudget() {
-            // calculate total income and expenses
             calculateTotal('exp');
             calculateTotal('inc');
 
-            // Calculate the budget: income - expenses
             data.budget = data.totals.inc - data.totals.exp;
         },
 

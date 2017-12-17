@@ -16,35 +16,21 @@ const morphing = anime({
 
 const controller = (function (budgetCtrl, UICtrl) {
     const updateBudget = function () {
-        // 1. Calculate the budget
         budgetCtrl.calculateBudget();
-
-        // 2. Return the budget
         const budget = budgetCtrl.getBudget();
-
-        // 3. Display the budget on the UI
         UICtrl.displayBudget(budget);
     };
 
     const ctrlAddItem = function () {
         let newItem;
-
-        // 1. Get the field input data
         const input = UICtrl.getInput();
 
         if (input.description !== '' && !Number.isNaN(input.value) && input.value > 0) {
             morphing.play();
             morphing.restart();
-            // 2. Add the item to the budget controller
             newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-
-            // 3. Add the item to the UI
             UICtrl.addListItem(newItem, input.type);
-
-            // 4. Clear the fields
             UICtrl.clearFields();
-
-            // 5. Calculate and update budget
             updateBudget();
         }
     };
@@ -55,13 +41,8 @@ const controller = (function (budgetCtrl, UICtrl) {
         if (itemID) {
             const [type, ID] = itemID.split('-');
 
-            // 1. delete the item from the data structure
             budgetCtrl.deleteItem(type, Number(ID));
-
-            // 2. Delete the item from the UI
             UICtrl.deleteListItem(itemID);
-
-            // 3. Update and show the new budget
             updateBudget();
         }
     };
@@ -90,5 +71,4 @@ const controller = (function (budgetCtrl, UICtrl) {
     };
 }(BudgetController(), UIController()));
 
-// document.addEventListener('DOMContentLoaded', () => controller.init());
 controller.init();

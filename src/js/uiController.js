@@ -5,7 +5,7 @@ export default function UIController() {
         let [int, dec] = numSplit;
 
         if (int.length > 3) {
-            int = `${int.substr(0, int.length - 3)},${int.substr(int.length - 3, 3)}`; // input 23510, output 23,510
+            int = `${int.substr(0, int.length - 3)},${int.substr(int.length - 3, 3)}`;
         }
 
         return `${(type === 'exp' ? '-' : '+')} ${int}.${dec}`;
@@ -34,7 +34,6 @@ export default function UIController() {
                 </div>
             `;
 
-            // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', html);
         },
 
