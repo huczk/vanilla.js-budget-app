@@ -2,6 +2,7 @@ import anime from 'animejs';
 import BudgetController from './budgetController';
 import UIController from './uiController';
 
+// Morphing SVG function - to morph SVG element after user submit new entry.
 const morphing = anime({
     targets: '#Shape',
     d: [
@@ -15,12 +16,14 @@ const morphing = anime({
 });
 
 const controller = (function (budgetCtrl, UICtrl) {
+    // Update budget - both, in the DOM and in the main app object.
     const updateBudget = function () {
         budgetCtrl.calculateBudget();
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
     };
 
+    // Add an item - both, in the DOM and in the main app object.
     const ctrlAddItem = function () {
         let newItem;
         const input = UICtrl.getInput();
@@ -35,6 +38,7 @@ const controller = (function (budgetCtrl, UICtrl) {
         }
     };
 
+    // Delete an item - both, in the DOM and in the main app object.
     const ctrlDeleteItem = function (event) {
         const itemID = event.target.parentNode.parentNode.id || event.target.parentNode.parentNode.parentNode.id;
 
@@ -47,6 +51,7 @@ const controller = (function (budgetCtrl, UICtrl) {
         }
     };
 
+    //  Setup event listeners for adding new entries and deleting exising ones.
     const setupEventListeners = function () {
         document.querySelector('.add__submit').addEventListener('click', ctrlAddItem);
 
@@ -60,6 +65,7 @@ const controller = (function (budgetCtrl, UICtrl) {
     };
 
     return {
+        // Init the App.
         init() {
             UICtrl.displayBudget({
                 budget: 0,

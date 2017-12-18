@@ -15,6 +15,7 @@ export default function BudgetController() {
         }
     }
 
+    // Object for store app data.
     const data = {
         allItems: {
             exp: [],
@@ -27,11 +28,13 @@ export default function BudgetController() {
         budget: 0,
     };
 
+    // Calculate total expenses or incomes.
     const calculateTotal = function (type) {
         data.totals[type] = data.allItems[type].reduce((acc, next) => acc + next.value, 0);
     };
 
     return {
+        // Add new item to data objects.
         addItem(type, des, val) {
             const ID = (data.allItems[type].length > 0
                 ? data.allItems[type][data.allItems[type].length - 1].id + 1
@@ -46,10 +49,12 @@ export default function BudgetController() {
             return newItem;
         },
 
+        // Delete item from data object.
         deleteItem(type, id) {
             data.allItems[type] = data.allItems[type].filter(item => item.id !== id);
         },
 
+        // Calculate budget summary.
         calculateBudget() {
             calculateTotal('exp');
             calculateTotal('inc');
@@ -57,6 +62,7 @@ export default function BudgetController() {
             data.budget = data.totals.inc - data.totals.exp;
         },
 
+        // Get budget data from main data object.
         getBudget() {
             return {
                 budget: data.budget,

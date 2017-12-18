@@ -1,4 +1,6 @@
 export default function UIController() {
+
+    // Formatting number from user input.
     const formatNumber = function (num, type) {
         const numFormated = Math.abs(num).toFixed(2);
         const numSplit = numFormated.split('.');
@@ -12,6 +14,7 @@ export default function UIController() {
     };
 
     return {
+        // Get new data from inputs fields.
         getInput() {
             return {
                 type: document.querySelector('input:checked').value,
@@ -20,6 +23,7 @@ export default function UIController() {
             };
         },
 
+        // Add new HTML to the DOM with new item.
         addListItem(obj, type) {
             const element = type === 'inc' ? '.details__income' : '.details__expense';
             const html = `
@@ -37,11 +41,13 @@ export default function UIController() {
             document.querySelector(element).insertAdjacentHTML('beforeend', html);
         },
 
+        // Delete Item from the DOM.
         deleteListItem(selectorID) {
             const el = document.getElementById(selectorID);
             el.parentNode.removeChild(el);
         },
 
+        // Clear input fields and focus on the first one (after user submited new entry).
         clearFields() {
             const fieldsArr = [...document.querySelectorAll('.add__description, .add__value')];
 
@@ -53,6 +59,7 @@ export default function UIController() {
             fieldsArr[0].focus();
         },
 
+        // Display current budget data in the DOM.
         displayBudget(obj) {
             const type = obj.budget > 0 ? 'inc' : 'exp';
 
